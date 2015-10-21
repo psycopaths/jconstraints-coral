@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>gov.nasa</groupId>
+	<artifactId>jConstraints-coral</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>jConstraints-coral</name>
+
+	<url>https://bitbucket.org/luckow/jconstraints-coral/</url>
+	<description>coral plugin for jConstraints</description>
+
+	<issueManagement>
+		<url>https://bitbucket.org/luckow/jconstraints-coral/issues</url>
+		<system>BitBucket Issues</system>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<id>ksluckow</id>
+			<name>Kasper Luckow</name>
+			<email>ksluckow@gmail.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jconstraints.version>0.9.1-SNAPSHOT</jconstraints.version>
+        <junit.version>4.11</junit.version>
+		<compiler-plugin.version>3.1</compiler-plugin.version>
+		<coral.version>0.7</coral.version>
+	</properties>
+
+	<build>
+		<plugins>  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.17</version>
+            <configuration>
+                <systemPropertyVariables>
+                    <!-- Set JUL Formatting -->
+                    <java.util.logging.SimpleFormatter.format>%5$s%6$s%n</java.util.logging.SimpleFormatter.format>
+                </systemPropertyVariables>
+            </configuration>
+        </plugin> 
+		</plugins>
+	</build>
+	
+	<dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+		<dependency>
+			<groupId>gov.nasa</groupId>
+			<artifactId>jconstraints</artifactId>
+			<version>${jconstraints.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>br.ufpe.cin.pan</groupId>
+			<artifactId>coral</artifactId>
+			<version>${coral.version}</version>
+		</dependency>
+
+        <!-- Coral dependencies -->
+        <dependency>
+            <groupId>commons-math</groupId>
+            <artifactId>commons-math</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- locally installed -->
+        <dependency>
+            <groupId>org.opt4j</groupId>
+            <artifactId>opt4j</artifactId>
+            <version>2.2</version>
+        </dependency>
+	</dependencies>
+</project>
